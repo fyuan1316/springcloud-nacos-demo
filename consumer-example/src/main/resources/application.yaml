@@ -1,0 +1,116 @@
+feign:
+#  hystrix:
+#    enabled: true
+  sentinel:
+    enabled: true
+#ribbon:
+#  eureka:
+#    enabled: true
+#  hystrix:
+#    enabled: false
+#  ConnectTimeout: 20000
+#  ReadTimeout: 20000
+#  OkToRetryOnAllOperations: true
+#  MaxAutoRetriesNextServer: 3
+#  MaxAutoRetries: 2
+#hystrix:
+#  threadpool:
+##    service-res:
+##      coreSize: 20
+##      maxQueueSize: 200
+##      queueSizeRejectionThreshold: 3
+#    default:
+#      coreSize: 10
+#      maxQueueSize: 200
+#      queueSizeRejectionThreshold: 2
+#  command:
+##    ResVenClient#getTree():
+##      execution:
+##        isolation:
+##          thread:
+##            timeoutInMilliseconds: 30000
+#    default:
+#      execution:
+#        timeout:
+#          enabled: true
+#        isolation:
+#          strategy: THREAD
+#          thread:
+#            timeoutInMilliseconds: 1000
+#            interruptOnTimeout: true
+#            interruptOnFutureCancel: false
+#          semaphore:
+#            maxConcurrentRequests: 2
+#      fallback:
+#        enabled: true
+#        isolation:
+#          semaphore:
+#            maxConcurrentRequests: 2
+#      circuitBreaker:
+#        enabled: true
+#        forceOpen: true # 强制开启熔断
+#        forceClosed: false # 强制忽略错误
+#        requestVolumeThreshold: 4
+#        errorThresholdPercentage: 50
+#        sleepWindowInMilliseconds: 10000
+#      metrics:
+#        rollingStats:
+#          timeInMilliseconds: 5000
+#          numBuckets: 10
+#        rollingPercentile:
+#          enabled: true
+#          timeInMilliseconds: 60000
+#          numBuckets: 6
+#          bucketSize: 100
+#        healthSnapshot:
+#          intervalInMilliseconds: 500
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+server:
+  port: 18083
+spring:
+  main:
+    allow-circular-references: true
+  application:
+    name: service-consumer
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        shared-configs[0]:
+          data-id: application.yaml
+          refresh: true
+      discovery:
+        fail-fast: true
+        server-addr: 127.0.0.1:8848
+      password: nacos
+      username: nacos
+    sentinel:
+      datasource:
+        ds:
+          nacos:
+            server-addr: 127.0.0.1:8848
+            username: nacos
+            password: nacos
+            dataId: service-consumer-flowrule
+            groupId: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow
+
+#        ds1:
+#          file:
+#            data-type: json
+#            file: 'classpath: flowrule.json'
+#            rule-type: flow
+        ds2:
+          file:
+            data-type: json
+            file: 'classpath: degraderule.json'
+            rule-type: degrade
+      eager: true
+      transport:
+        dashboard: localhost:8080

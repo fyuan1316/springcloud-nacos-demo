@@ -18,8 +18,7 @@
 
     <properties>
         <revision>2021.0.4.0-SNAPSHOT</revision>
-<!--        <sentinel.version>1.8.5</sentinel.version>-->
-<!--        <seata.version>1.5.2</seata.version>-->
+        <sentinel.version>1.8.5</sentinel.version>
         <nacos.client.version>2.0.4</nacos.client.version>
         <spring.context.support.version>1.0.11</spring.context.support.version>
 
@@ -48,22 +47,22 @@
             </dependency>
 
             <!-- Sentinel -->
-<!--            <dependency>-->
-<!--                <groupId>com.alibaba.csp</groupId>-->
-<!--                <artifactId>sentinel-core</artifactId>-->
-<!--                <version>${sentinel.version}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-core</artifactId>
+                <version>${sentinel.version}</version>
+            </dependency>
 
-<!--            <dependency>-->
-<!--                <groupId>com.alibaba.csp</groupId>-->
-<!--                <artifactId>sentinel-parameter-flow-control</artifactId>-->
-<!--                <version>${sentinel.version}</version>-->
-<!--            </dependency>-->
-<!--            <dependency>-->
-<!--                <groupId>com.alibaba.csp</groupId>-->
-<!--                <artifactId>sentinel-datasource-extension</artifactId>-->
-<!--                <version>${sentinel.version}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-parameter-flow-control</artifactId>
+                <version>${sentinel.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-datasource-extension</artifactId>
+                <version>${sentinel.version}</version>
+            </dependency>
 
 <!--            <dependency>-->
 <!--                <groupId>com.alibaba.csp</groupId>-->
@@ -77,11 +76,11 @@
 <!--                <version>${sentinel.version}</version>-->
 <!--            </dependency>-->
 
-<!--            <dependency>-->
-<!--                <groupId>com.alibaba.csp</groupId>-->
-<!--                <artifactId>sentinel-datasource-nacos</artifactId>-->
-<!--                <version>${sentinel.version}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-datasource-nacos</artifactId>
+                <version>${sentinel.version}</version>
+            </dependency>
 
 <!--            <dependency>-->
 <!--                <groupId>com.alibaba.csp</groupId>-->
@@ -95,64 +94,64 @@
 <!--                <version>${sentinel.version}</version>-->
 <!--            </dependency>-->
 
-<!--            <dependency>-->
-<!--                <groupId>com.alibaba.csp</groupId>-->
-<!--                <artifactId>sentinel-web-servlet</artifactId>-->
-<!--                <version>${sentinel.version}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-web-servlet</artifactId>
+                <version>${sentinel.version}</version>
+            </dependency>
 
-<!--            <dependency>-->
-<!--                <groupId>com.alibaba.csp</groupId>-->
-<!--                <artifactId>sentinel-spring-cloud-gateway-adapter</artifactId>-->
-<!--                <version>${sentinel.version}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-spring-cloud-gateway-adapter</artifactId>
+                <version>${sentinel.version}</version>
+            </dependency>
 
-<!--            <dependency>-->
-<!--                <groupId>com.alibaba.csp</groupId>-->
-<!--                <artifactId>sentinel-transport-simple-http</artifactId>-->
-<!--                <version>${sentinel.version}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-transport-simple-http</artifactId>
+                <version>${sentinel.version}</version>
+            </dependency>
 
-<!--            <dependency>-->
-<!--                <groupId>com.alibaba.csp</groupId>-->
-<!--                <artifactId>sentinel-annotation-aspectj</artifactId>-->
-<!--                <version>${sentinel.version}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-annotation-aspectj</artifactId>
+                <version>${sentinel.version}</version>
+            </dependency>
 
-<!--            <dependency>-->
-<!--                <groupId>com.alibaba.csp</groupId>-->
-<!--                <artifactId>sentinel-reactor-adapter</artifactId>-->
-<!--                <version>${sentinel.version}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-reactor-adapter</artifactId>
+                <version>${sentinel.version}</version>
+            </dependency>
 
-<!--            <dependency>-->
-<!--                <groupId>com.alibaba.csp</groupId>-->
-<!--                <artifactId>sentinel-cluster-server-default</artifactId>-->
-<!--                <version>${sentinel.version}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-cluster-server-default</artifactId>
+                <version>${sentinel.version}</version>
+            </dependency>
 
-<!--            <dependency>-->
-<!--                <groupId>com.alibaba.csp</groupId>-->
-<!--                <artifactId>sentinel-cluster-client-default</artifactId>-->
-<!--                <version>${sentinel.version}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-cluster-client-default</artifactId>
+                <version>${sentinel.version}</version>
+            </dependency>
 
-<!--            <dependency>-->
-<!--                <groupId>com.alibaba.csp</groupId>-->
-<!--                <artifactId>sentinel-spring-webflux-adapter</artifactId>-->
-<!--                <version>${sentinel.version}</version>-->
-<!--            </dependency>-->
-<!--            <dependency>-->
-<!--                <groupId>com.alibaba.csp</groupId>-->
-<!--                <artifactId>sentinel-api-gateway-adapter-common</artifactId>-->
-<!--                <version>${sentinel.version}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-spring-webflux-adapter</artifactId>
+                <version>${sentinel.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-api-gateway-adapter-common</artifactId>
+                <version>${sentinel.version}</version>
+            </dependency>
 
-<!--            <dependency>-->
-<!--                <groupId>com.alibaba.csp</groupId>-->
-<!--                <artifactId>sentinel-spring-webmvc-adapter</artifactId>-->
-<!--                <version>${sentinel.version}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-spring-webmvc-adapter</artifactId>
+                <version>${sentinel.version}</version>
+            </dependency>
 
             <!--Alibaba Seata-->
 <!--            <dependency>-->
@@ -162,29 +161,29 @@
 <!--            </dependency>-->
 
             <!-- Own dependencies  -->
-<!--            <dependency>-->
-<!--                <groupId>com.alibaba.cloud</groupId>-->
-<!--                <artifactId>spring-cloud-alibaba-sentinel-datasource</artifactId>-->
-<!--                <version>${revision}</version>-->
-<!--            </dependency>-->
-<!--            <dependency>-->
-<!--                <groupId>com.alibaba.cloud</groupId>-->
-<!--                <artifactId>spring-cloud-alibaba-sentinel-gateway</artifactId>-->
-<!--                <version>${revision}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-sentinel-datasource</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-sentinel-gateway</artifactId>
+                <version>${revision}</version>
+            </dependency>
 
             <!-- Own dependencies - Starters -->
-<!--            <dependency>-->
-<!--                <groupId>com.alibaba.cloud</groupId>-->
-<!--                <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>-->
-<!--                <version>${revision}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+                <version>${revision}</version>
+            </dependency>
 
-<!--            <dependency>-->
-<!--                <groupId>com.alibaba.cloud</groupId>-->
-<!--                <artifactId>spring-cloud-circuitbreaker-sentinel</artifactId>-->
-<!--                <version>${revision}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-circuitbreaker-sentinel</artifactId>
+                <version>${revision}</version>
+            </dependency>
 
 <!--            <dependency>-->
 <!--                <groupId>com.alibaba.cloud</groupId>-->

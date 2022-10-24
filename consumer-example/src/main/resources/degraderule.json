@@ -2,7 +2,7 @@
   {
     "resource": "GET:http://service-provider/test",
     "count": 0.5,
-    "grade": 1,
+    "grade": 1, // 异常比例
     "timeWindow": 30
   },
   {
@@ -14,7 +14,7 @@
   {
     "resource": "GET:http://service-provider/sleep",
     "count": 20.0,
-    "grade": 0,
+    "grade": 0, // 慢调用
     "timeWindow": 30
   },
   {

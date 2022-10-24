@@ -29,7 +29,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <revision>2021.0.4.0-SNAPSHOT</revision>
+        <revision>0.1.0</revision>
 
         <spring-boot.version>2.6.11</spring-boot.version>
         <!-- Spring Cloud -->
@@ -86,9 +86,10 @@
             </dependency>
 
             <dependency>
-                <groupId>org.mars</groupId>
-                <artifactId>springcloud-nacos-demo-dependencies</artifactId>
-                <version>${project.version}</version>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>2021.1</version>
+<!--                <version>2021.0.1.0</version>-->
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -154,30 +155,30 @@
                     </additionalConfig>
                 </configuration>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-checkstyle-plugin</artifactId>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>checkstyle-validation</id>-->
-<!--                        <phase>validate</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>check</goal>-->
-<!--                        </goals>-->
-<!--                        <configuration>-->
-<!--                            &lt;!&ndash; Checkstyle rules inherited from spring-cloud-build &ndash;&gt;-->
-<!--                            <suppressionsLocation>-->
-<!--                                ${maven.multiModuleProjectDirectory}/eclipse/checkstyle-suppressions.xml-->
-<!--                            </suppressionsLocation>-->
-<!--                            <includeTestSourceDirectory>true</includeTestSourceDirectory>-->
-<!--                            <consoleOutput>true</consoleOutput>-->
-<!--                            <failsOnError>true</failsOnError>-->
-<!--                            <failOnViolation>true</failOnViolation>-->
-<!--                            <violationSeverity>warning</violationSeverity>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
+            <!--            <plugin>-->
+            <!--                <groupId>org.apache.maven.plugins</groupId>-->
+            <!--                <artifactId>maven-checkstyle-plugin</artifactId>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <id>checkstyle-validation</id>-->
+            <!--                        <phase>validate</phase>-->
+            <!--                        <goals>-->
+            <!--                            <goal>check</goal>-->
+            <!--                        </goals>-->
+            <!--                        <configuration>-->
+            <!--                            &lt;!&ndash; Checkstyle rules inherited from spring-cloud-build &ndash;&gt;-->
+            <!--                            <suppressionsLocation>-->
+            <!--                                ${maven.multiModuleProjectDirectory}/eclipse/checkstyle-suppressions.xml-->
+            <!--                            </suppressionsLocation>-->
+            <!--                            <includeTestSourceDirectory>true</includeTestSourceDirectory>-->
+            <!--                            <consoleOutput>true</consoleOutput>-->
+            <!--                            <failsOnError>true</failsOnError>-->
+            <!--                            <failOnViolation>true</failOnViolation>-->
+            <!--                            <violationSeverity>warning</violationSeverity>-->
+            <!--                        </configuration>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>

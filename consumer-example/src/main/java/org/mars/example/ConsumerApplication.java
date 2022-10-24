@@ -17,7 +17,7 @@
 package org.mars.example;
 
 import org.mars.example.ConsumerApplication.EchoService;
-//import com.alibaba.cloud.sentinel.annotation.SentinelRestTemplate;
+import com.alibaba.cloud.sentinel.annotation.SentinelRestTemplate;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -41,14 +41,14 @@ public class ConsumerApplication {
 
 	@LoadBalanced
 	@Bean
-//	@SentinelRestTemplate(urlCleanerClass = UrlCleaner.class, urlCleaner = "clean")
+	@SentinelRestTemplate(urlCleanerClass = UrlCleaner.class, urlCleaner = "clean")
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
 	}
 
 	@LoadBalanced
 	@Bean
-//	@SentinelRestTemplate
+	@SentinelRestTemplate
 	public RestTemplate restTemplate1() {
 		return new RestTemplate();
 	}
