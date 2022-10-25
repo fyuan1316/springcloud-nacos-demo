@@ -18,7 +18,9 @@ package org.mars.example;
 
 import org.mars.example.ConsumerApplication.EchoService;
 
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,6 +32,7 @@ import org.springframework.web.client.RestTemplate;
  * @author xiaojing
  */
 @RestController
+@RefreshScope
 public class TestController {
 
 	@Autowired
@@ -43,6 +46,9 @@ public class TestController {
 
 	@Autowired
 	private DiscoveryClient discoveryClient;
+
+	@Value("${feign.client.config.default.readTimeout}")
+	private String feignReadTimeout;
 
 	// @PostConstruct
 	// public void init() {
@@ -115,5 +121,10 @@ public class TestController {
 		return echoService.delay(ms);
 	}
 
+	// 检测 application.yaml context中 feign.client.config.default.readTimeout 动态修改生效
+	@GetMapping("/env")
+	public String showEnv() {
+		return "feignReadTimeout:" + feignReadTimeout;
+	}
 
 }

@@ -1,8 +1,72 @@
-feign:
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+server:
+  port: 18083
+spring:
+  main:
+    allow-circular-references: true # Fix sprint-boot 2.6+
+  application:
+    name: service-consumer
+  cloud:
+    nacos:
+      discovery:
+        fail-fast: true
+        server-addr: 127.0.0.1:8848
+      password: nacos
+      username: nacos
+    sentinel:
+      eager: true
+      transport:
+        dashboard: localhost:8080
+      datasource:
+        flow:
+          nacos:
+            server-addr: 127.0.0.1:8848
+            username: nacos
+            password: nacos
+            dataId: service-consumer-flowrule
+            groupId: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow
+        degrade:
+          nacos:
+            server-addr: 127.0.0.1:8848
+            username: nacos
+            password: nacos
+            dataId: service-consumer-degraderule
+            groupId: DEFAULT_GROUP
+            data-type: json
+            rule-type: degrade
+
+#        ds1:
+#          file:
+#            data-type: json
+#            file: 'classpath: flowrule.json'
+#            rule-type: flow
+#        ds2:
+#          file:
+#            data-type: json
+#            file: 'classpath: degraderule.json'
+#            rule-type: degrade
+
+
+
+# feign 超时设置 单位毫秒
+#feign:
+#  client:
+#    refresh-enabled: true
+#    config:
+#      default:
+#        connectTimeout: 1000
+#        readTimeout: 1000
+#  sentinel:
+#    enabled: true
 #  hystrix:
 #    enabled: true
-  sentinel:
-    enabled: true
+
 #ribbon:
 #  eureka:
 #    enabled: true
@@ -64,53 +128,3 @@ feign:
 #          bucketSize: 100
 #        healthSnapshot:
 #          intervalInMilliseconds: 500
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-server:
-  port: 18083
-spring:
-  main:
-    allow-circular-references: true
-  application:
-    name: service-consumer
-  cloud:
-    nacos:
-      config:
-        server-addr: 127.0.0.1:8848
-        shared-configs[0]:
-          data-id: application.yaml
-          refresh: true
-      discovery:
-        fail-fast: true
-        server-addr: 127.0.0.1:8848
-      password: nacos
-      username: nacos
-    sentinel:
-      datasource:
-        ds:
-          nacos:
-            server-addr: 127.0.0.1:8848
-            username: nacos
-            password: nacos
-            dataId: service-consumer-flowrule
-            groupId: DEFAULT_GROUP
-            data-type: json
-            rule-type: flow
-
-#        ds1:
-#          file:
-#            data-type: json
-#            file: 'classpath: flowrule.json'
-#            rule-type: flow
-        ds2:
-          file:
-            data-type: json
-            file: 'classpath: degraderule.json'
-            rule-type: degrade
-      eager: true
-      transport:
-        dashboard: localhost:8080
