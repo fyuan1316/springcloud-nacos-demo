@@ -4,7 +4,7 @@ management:
       exposure:
         include: '*'
 server:
-  port: 18083
+  port: ${port:18083}
 spring:
   main:
     allow-circular-references: true # Fix sprint-boot 2.6+
@@ -55,13 +55,13 @@ spring:
 
 
 # feign 超时设置 单位毫秒
-#feign:
-#  client:
-#    refresh-enabled: true
-#    config:
-#      default:
-#        connectTimeout: 1000
-#        readTimeout: 1000
+feign:
+  client:
+    refresh-enabled: true
+    config:
+      default:
+        connectTimeout: 1000
+        readTimeout: 1000
 #  sentinel:
 #    enabled: true
 #  hystrix:
