@@ -14,6 +14,8 @@ spec:
     metadata:
       labels:
         app: simple-client
+      annotation:
+        sidecar.istio.io/inject: "true"
     spec:
       containers:
         - image: "{{ .Values.hub }}/{{ .Values.image.consumer.repository }}/alpine-bash-curl-jq:latest"
