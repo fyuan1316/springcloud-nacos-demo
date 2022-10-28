@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: spring-nacos-provider
+  name: spring-nacos-provider
+  namespace: {{ .Values.ns.workload }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-nacos-provider
+  template:
+    metadata:
+      labels:
+        app: spring-nacos-provider
+    spec:
+      serviceAccountName: {{ include "spring-nacos-demo.serviceAccountName" . }}
+      containers:
+        - image: "{{ .Values.hub }}/{{ .Values.image.provider.repository }}/spring-nacos-demo-provider:{{ .Values.image.provider.tag }}"
+          imagePullPolicy: Always
+          name: app
+          command:
+            - java
+          args:
+            - -jar
+            - -Dport={{ .Values.service.provider.port }}
+            - -Dnacos-server={{ .Values.nacos.server }}
+            - -Dnacos-user={{ .Values.nacos.user }}
+            - -Dnacos-password={{ .Values.nacos.password }}
+            - app.jar
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.provider.port }}
+              protocol: TCP
+          readinessProbe:
+            tcpSocket:
+              port: {{ .Values.service.provider.port }}
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            tcpSocket:
+              port: {{ .Values.service.provider.port }}
+            initialDelaySeconds: 15
+            periodSeconds: 20
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-nacos-provider
+  namespace: {{ .Values.ns.workload }}
+  labels:
+    app: spring-nacos-provider
+spec:
+  type: {{ .Values.service.provider.type }}
+  ports:
+    - port: {{ .Values.service.provider.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: spring-nacos-provider

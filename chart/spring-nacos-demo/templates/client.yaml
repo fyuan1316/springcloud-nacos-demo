@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: simple-client
+  name: simple-client
+  namespace: {{ .Values.ns.client }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simple-client
+  template:
+    metadata:
+      labels:
+        app: simple-client
+    spec:
+      containers:
+        - image: "{{ .Values.hub }}/{{ .Values.image.consumer.repository }}/alpine-bash-curl-jq:latest"
+          imagePullPolicy: Always
+          name: app
+          command:
+            - sleep
+            - 365d

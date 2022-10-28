@@ -9,14 +9,14 @@ spring:
   main:
     allow-circular-references: true # Fix sprint-boot 2.6+
   application:
-    name: service-consumer
+    name: ${name:service-consumer}
   cloud:
     nacos:
       discovery:
         fail-fast: true
-        server-addr: 127.0.0.1:8848
-      password: nacos
-      username: nacos
+        server-addr: ${nacos-server:127.0.0.1:8848}
+      password: ${nacos-user:nacos}
+      username: ${nacos-password:nacos}
     sentinel:
       eager: true
       transport:
@@ -24,18 +24,18 @@ spring:
       datasource:
         flow:
           nacos:
-            server-addr: 127.0.0.1:8848
-            username: nacos
-            password: nacos
+            server-addr: ${nacos-server:127.0.0.1:8848}
+            username: ${nacos-user:nacos}
+            password: ${nacos-password:nacos}
             dataId: service-consumer-flowrule
             groupId: DEFAULT_GROUP
             data-type: json
             rule-type: flow
         degrade:
           nacos:
-            server-addr: 127.0.0.1:8848
-            username: nacos
-            password: nacos
+            server-addr: ${nacos-server:127.0.0.1:8848}
+            username: ${nacos-user:nacos}
+            password: ${nacos-password:nacos}
             dataId: service-consumer-degraderule
             groupId: DEFAULT_GROUP
             data-type: json

@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: spring-nacos-consumer
+  name: spring-nacos-consumer
+  namespace: {{ .Values.ns.workload }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-nacos-consumer
+  template:
+    metadata:
+      labels:
+        app: spring-nacos-consumer
+    spec:
+      serviceAccountName: {{ include "spring-nacos-demo.serviceAccountName" . }}
+      containers:
+        - image:  "{{ .Values.hub }}/{{ .Values.image.consumer.repository }}/spring-nacos-demo-dashboard:{{ .Values.image.consumer.tag }}"
+          imagePullPolicy: Always
+          name: dashboard
+          command:
+            - java
+          args:
+            - -jar
+            - app.jar
+          ports:
+            - name: dashboard
+              containerPort: 8080
+              protocol: TCP
+        - image: "{{ .Values.hub }}/{{ .Values.image.consumer.repository }}/spring-nacos-demo-consumer:{{ .Values.image.consumer.tag }}"
+          imagePullPolicy: Always
+          name: app
+          command:
+          - java
+          args:
+            - -jar
+            - -Dport={{ .Values.service.consumer.port }}
+            - -Dnacos-server={{ .Values.nacos.server }}
+            - -Dnacos-user={{ .Values.nacos.user }}
+            - -Dnacos-password={{ .Values.nacos.password }}
+            - app.jar
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.consumer.port }}
+              protocol: TCP
+          readinessProbe:
+            tcpSocket:
+              port: {{ .Values.service.consumer.port }}
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            tcpSocket:
+              port: {{ .Values.service.consumer.port }}
+            initialDelaySeconds: 15
+            periodSeconds: 20
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-nacos-consumer
+  namespace: {{ .Values.ns.workload }}
+  labels:
+    app: spring-nacos-consumer
+spec:
+  type: {{ .Values.service.consumer.type }}
+  ports:
+    - port: {{ .Values.service.consumer.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+    - port: 8080
+      targetPort: dashboard
+      protocol: TCP
+      name: dashboard
+  selector:
+    app: spring-nacos-consumer
