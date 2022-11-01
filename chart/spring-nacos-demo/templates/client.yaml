@@ -14,7 +14,7 @@ spec:
     metadata:
       labels:
         app: simple-client
-      annotation:
+      annotations:
         sidecar.istio.io/inject: "true"
     spec:
       containers:
