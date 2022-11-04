@@ -12,12 +12,13 @@ image:
     repository: test/asm
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
-    tag: "latest"
+    tag: "changename"
+    dashboardTag: "latest"
   provider:
     repository: test/asm
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
-    tag: "latest"
+    tag: "changename"
 
 nacos:
   server: nacos-cs.default:8848
@@ -31,6 +32,31 @@ service:
   provider:
     type: ClusterIP
     port: 18082
+
+env:
+  namespace: public
+  group: DEFAULT_GROUP
+  cluster: DEFAULT
+  oa:
+    namespace: 62698514-6731-4d7f-a61f-fce4e929431b
+    dev:
+      prefix: -oa-dev
+      group: dev
+      cluster: DEFAULT
+    qa:
+      prefix: -oa-qa
+      group: qa
+      cluster: DEFAULT
+  crm:
+    namespace: 3017e721-0326-4360-8f3a-17471f5ca08f
+    dev:
+      prefix: -crm-dev
+      group: dev
+      cluster: DEFAULT
+    qa:
+      prefix: -crm-qa
+      group: qa
+      cluster: DEFAULT
 
 #
 #imagePullSecrets: []

@@ -1,5 +1,5 @@
-ConsumerIMG ?= build-harbor.alauda.cn/test/asm/spring-nacos-demo-consumer:latest
-ProviderIMG ?= build-harbor.alauda.cn/test/asm/spring-nacos-demo-provider:latest
+ConsumerIMG ?= build-harbor.alauda.cn/test/asm/spring-nacos-demo-consumer:changename
+ProviderIMG ?= build-harbor.alauda.cn/test/asm/spring-nacos-demo-provider:changename
 SentinelIMG ?= build-harbor.alauda.cn/test/asm/spring-nacos-demo-dashboard:latest
 ConsumerPath=./consumer-example
 ProviderPath=./provider-example

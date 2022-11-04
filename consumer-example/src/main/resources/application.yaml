@@ -15,6 +15,9 @@ spring:
       discovery:
         fail-fast: true
         server-addr: ${nacos-server:127.0.0.1:8848}
+        namespace: ${namespace:public}
+        group: ${group:DEFAULT_GROUP}
+        cluster-name: ${cluster:DEFAULT}
       password: ${nacos-user:nacos}
       username: ${nacos-password:nacos}
     sentinel:

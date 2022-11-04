@@ -28,6 +28,9 @@ spec:
             - -Dnacos-server={{ .Values.nacos.server }}
             - -Dnacos-user={{ .Values.nacos.user }}
             - -Dnacos-password={{ .Values.nacos.password }}
+            - -Dnamespace={{ .Values.env.namespace }}
+            - -Dgroup={{ .Values.env.group }}
+            - -Dcluster={{ .Values.env.cluster }}
             - app.jar
           ports:
             - name: http
